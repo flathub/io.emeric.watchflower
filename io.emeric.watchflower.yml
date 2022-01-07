@@ -94,11 +94,5 @@ modules:
   buildsystem: qmake
   sources:
     - type: archive
-      url: https://github.com/emericg/WatchFlower/archive/refs/tags/v3.1.tar.gz
-      sha256: c40a23ba7d962b10b2d35e65fe5f0b55f3b97f1773d4304bfb25df6f42a33cac
-    - type: file
-      path: watchflower.appdata.xml
-  post-install:
-    - mkdir -p /app/share/icons/hicolor/scalable/apps/
-    - mv /app/share/pixmaps/watchflower.svg /app/share/icons/hicolor/scalable/apps/
-    - mv -f watchflower.appdata.xml /app/share/appdata/watchflower.appdata.xml
+      url: https://github.com/emericg/WatchFlower/archive/refs/tags/v3.2.tar.gz
+      sha256: fdfd5c5bf18a4a10f34d60b41d238521c766f834234784fd3a086fbb1192c465
