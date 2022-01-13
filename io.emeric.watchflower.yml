@@ -22,77 +22,78 @@ finish-args:
   - --share=network
 
 cleanup:
-- /bin/__pypache__
-- /bin/rst*
-- /include
-- /lib/cmake
-- /lib/cups
-- /lib/pkgconfig
-- /lib/python*
-- /share/doc
-- /share/man
-- /share/zsh
-- /src
-- '*.a'
-- '*.la'
+  - /bin/__pypache__
+  - /bin/rst*
+  - /include
+  - /lib/cmake
+  - /lib/cups
+  - /lib/pkgconfig
+  - /lib/python*
+  - /share/doc
+  - /share/man
+  - /share/zsh
+  - /src
+  - '*.a'
+  - '*.la'
 
 modules:
 
-- name: python3-docutils # required to build bluez
-  buildsystem: simple
-  sources:
-    - type: file
-      url: https://files.pythonhosted.org/packages/57/b1/b880503681ea1b64df05106fc7e3c4e3801736cf63deffc6fa7fc5404cf5/docutils-0.18.1.tar.gz
-      sha256: 679987caf361a7539d76e584cbeddc311e3aee937877c87346f31debc63e9d06
-  build-commands:
-    - pip3 install --no-index --find-links="file://${PWD}" --prefix="${FLATPAK_DEST}" docutils
+  - name: python3-docutils # required to build bluez
+    buildsystem: simple
+    sources:
+      - type: file
+        url: https://files.pythonhosted.org/packages/57/b1/b880503681ea1b64df05106fc7e3c4e3801736cf63deffc6fa7fc5404cf5/docutils-0.18.1.tar.gz
+        sha256: 679987caf361a7539d76e584cbeddc311e3aee937877c87346f31debc63e9d06
+    build-commands:
+      - pip3 install --no-index --find-links="file://${PWD}" --prefix="${FLATPAK_DEST}"
+        docutils
 
-- name: bluez # required by qtconnectivity
-  config-opts:
-    - --disable-datafiles
-    - --disable-systemd
-    - --enable-experimental
-    - --enable-library
-    - --disable-client
-    - --disable-mesh
-    - --disable-tools
-    - --disable-monitor
-    - --disable-udev
-    - --prefix=/app
-    - --sysconfdir=/app/etc
-  sources:
-    - type: archive
-      url: https://www.kernel.org/pub/linux/bluetooth/bluez-5.63.tar.xz
-      sha256: 9349e11e8160bb3d720835d271250d8a7424d3690f5289e6db6fe07cc66c6d76
-      x-checker-data:
-        type: anitya
-        project-id: 10029
-        url-template: https://www.kernel.org/pub/linux/bluetooth/bluez-$version.tar.xz
+  - name: bluez # required by qtconnectivity
+    config-opts:
+      - --disable-datafiles
+      - --disable-systemd
+      - --enable-experimental
+      - --enable-library
+      - --disable-client
+      - --disable-mesh
+      - --disable-tools
+      - --disable-monitor
+      - --disable-udev
+      - --prefix=/app
+      - --sysconfdir=/app/etc
+    sources:
+      - type: archive
+        url: https://www.kernel.org/pub/linux/bluetooth/bluez-5.63.tar.xz
+        sha256: 9349e11e8160bb3d720835d271250d8a7424d3690f5289e6db6fe07cc66c6d76
+        x-checker-data:
+          type: anitya
+          project-id: 10029
+          url-template: https://www.kernel.org/pub/linux/bluetooth/bluez-$version.tar.xz
 
-- name: qtconnectivity
-  buildsystem: simple
-  cleanup-platform:
-    - /bin
-    - /mkspecs
-  sources:
-    - type: git
-      url: https://github.com/qt/qtconnectivity
-      tag: v5.15.2
-      commit: ca6cc606d9fc0947ea6c27738a1ca8f12f3258ea
-      x-checker-data:
-        type: anitya
-        project-id: 153467
-        tag-template: v$version
-  build-commands:
-    - qmake
-    - make -j $FLATPAK_BUILDER_N_JOBS
-    - mkdir -p /app/src/bluetooth
-    - cp -r -n {bin,include,lib} /app # we need to deploy libs at the right place
-    - cp -r src/bluetooth /app/src/ # header files too
+  - name: qtconnectivity
+    buildsystem: simple
+    cleanup-platform:
+      - /bin
+      - /mkspecs
+    sources:
+      - type: git
+        url: https://github.com/qt/qtconnectivity
+        tag: v6.2.2
+        commit: a3e71fa606d0d9e2741fda322a05a61868802be3
+        x-checker-data:
+          type: anitya
+          project-id: 153467
+          tag-template: v$version
+    build-commands:
+      - qmake
+      - make -j $FLATPAK_BUILDER_N_JOBS
+      - mkdir -p /app/src/bluetooth
+      - cp -r -n {bin,include,lib} /app # we need to deploy libs at the right place
+      - cp -r src/bluetooth /app/src/ # header files too
 
-- name: watchflower
-  buildsystem: qmake
-  sources:
-    - type: archive
-      url: https://github.com/emericg/WatchFlower/archive/refs/tags/v3.2.tar.gz
-      sha256: fdfd5c5bf18a4a10f34d60b41d238521c766f834234784fd3a086fbb1192c465
+  - name: watchflower
+    buildsystem: qmake
+    sources:
+      - type: archive
+        url: https://github.com/emericg/WatchFlower/archive/refs/tags/v3.2.tar.gz
+        sha256: fdfd5c5bf18a4a10f34d60b41d238521c766f834234784fd3a086fbb1192c465
