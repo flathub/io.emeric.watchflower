@@ -78,8 +78,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/qt/qtconnectivity
-        tag: v5.15.2
-        commit: ca6cc606d9fc0947ea6c27738a1ca8f12f3258ea
+        tag: v6.4.0-beta1
+        commit: 578c6bf793c875ddafe3478b003c9f1bbfe7b89b
         x-checker-data:
           type: anitya
           project-id: 153467
