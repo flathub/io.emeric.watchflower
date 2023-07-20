@@ -73,8 +73,8 @@ modules:
       - --sysconfdir=/app/etc
     sources:
       - type: archive
-        url: https://www.kernel.org/pub/linux/bluetooth/bluez-5.66.tar.xz
-        sha256: 39fea64b590c9492984a0c27a89fc203e1cdc74866086efb8f4698677ab2b574
+        url: https://www.kernel.org/pub/linux/bluetooth/bluez-5.68.tar.xz
+        sha256: fc505e6445cb579a55cacee6821fe70d633921522043d322b696de0a175ff933
         x-checker-data:
           type: anitya
           project-id: 10029
@@ -125,8 +125,8 @@ modules:
       - -DQT_BUILD_TESTS=OFF
     sources:
       - type: archive
-        url: https://download.qt.io/archive/qt/6.5/6.5.1/submodules/qtshadertools-everywhere-src-6.5.1.tar.xz
-        sha256: e5806761835944ef91d5aee0679e0c8231bf7a981e064480e65c751ebdf65052
+        url: https://download.qt.io/archive/qt/6.5/6.5.2/submodules/qtshadertools-everywhere-src-6.5.2.tar.xz
+        sha256: ca3fb0db8576c59b9c38bb4b271cc6e10aebeb54e2121f429f4ee80671fc0a3d
         x-checker-data:
           type: anitya
           project-id: 7927
@@ -177,8 +177,8 @@ modules:
       - -DQT_BUILD_TESTS=OFF
     sources:
       - type: archive
-        url: https://download.qt.io/archive/qt/6.5/6.5.1/submodules/qtimageformats-everywhere-src-6.5.1.tar.xz
-        sha256: 897f7fc299ad03580dee91920644dc43cb5d32e1b8c97e8b594fac9aa68c5db5
+        url: https://download.qt.io/archive/qt/6.5/6.5.2/submodules/qtimageformats-everywhere-src-6.5.2.tar.xz
+        sha256: aae0c08924c6a5e47f9d57e031673d611ffff7aab2bee2e1cc460471ecac6743
         x-checker-data:
           type: anitya
           project-id: 7927
@@ -193,8 +193,8 @@ modules:
       - -DQT_BUILD_TESTS=OFF
     sources:
       - type: archive
-        url: https://download.qt.io/archive/qt/6.5/6.5.1/submodules/qtsvg-everywhere-src-6.5.1.tar.xz
-        sha256: d58d29491d44f0f59b684686a9898fec0e6c4fb7c09d9393b4e9c211fe9608ef
+        url: https://download.qt.io/archive/qt/6.5/6.5.2/submodules/qtsvg-everywhere-src-6.5.2.tar.xz
+        sha256: 48b4cc1093af2e0ab3bea30f60651bddd877a2335d16e7207879a2e9e81963a3
         x-checker-data:
           type: anitya
           project-id: 7927
@@ -241,8 +241,8 @@ modules:
       - -DQT_BUILD_TESTS=OFF
     sources:
       - type: archive
-        url: https://download.qt.io/archive/qt/6.5/6.5.1/submodules/qt5compat-everywhere-src-6.5.1.tar.xz
-        sha256: ae992b295fefabef2445beb3a8ec31c40fa0fb2c01603eaf2acfdb4a0054fb83
+        url: https://download.qt.io/archive/qt/6.5/6.5.2/submodules/qt5compat-everywhere-src-6.5.2.tar.xz
+        sha256: b9abe42ee2055c27a8e7579c7816069e91aae1f9b10649bf572db8ba96fa91c4
         x-checker-data:
           type: anitya
           project-id: 7927
