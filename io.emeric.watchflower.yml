@@ -1,6 +1,6 @@
 app-id: io.emeric.watchflower
 runtime: org.freedesktop.Platform
-runtime-version: '22.08'
+runtime-version: '23.08'
 sdk: org.freedesktop.Sdk
 command: watchflower
 
@@ -19,6 +19,7 @@ finish-args:
   # We need Bluetooth support
   - --allow=bluetooth
   - --system-talk-name=org.bluez
+  # We can use network to connect to remote database
   - --share=network
 
 cleanup:
@@ -37,49 +38,6 @@ cleanup:
   - '*.la'
 
 modules:
-  - name: libical # required by bluez
-    buildsystem: cmake-ninja
-    config-opts:
-      - -DCMAKE_BUILD_TYPE=RelWithDebInfo
-      - -DBUILD_SHARED_LIBS:BOOL=ON
-      - -DICAL_GLIB=true
-      - -DGOBJECT_INTROSPECTION=true
-      - -DICAL_GLIB_VAPI=true
-      - -DICAL_BUILD_DOCS=false
-      - -DICAL_GLIB_VAPI=false
-    sources:
-      - type: archive
-        url: https://github.com/libical/libical/archive/v3.0.16.tar.gz
-        sha256: b44705dd71ca4538c86fb16248483ab4b48978524fb1da5097bd76aa2e0f0c33
-        x-checker-data:
-          type: anitya
-          project-id: 1637
-          url-template: https://github.com/libical/libical/archive/v$version.tar.gz
-
-  - name: bluez # required by qtconnectivity
-    buildsystem: autotools
-    config-opts:
-      - --disable-tools
-      - --disable-cups
-      - --disable-monitor
-      - --disable-client
-      - --disable-systemd
-      - --disable-udev
-      - --disable-manpages
-      - --disable-datafiles
-      - --enable-experimental
-      - --enable-library
-      - --prefix=/app
-      - --sysconfdir=/app/etc
-    sources:
-      - type: archive
-        url: https://www.kernel.org/pub/linux/bluetooth/bluez-5.69.tar.xz
-        sha256: bc5a35ddc7c72d0d3999a0d7b2175c8b7d57ab670774f8b5b4900ff38a2627fc
-        x-checker-data:
-          type: anitya
-          project-id: 10029
-          url-template: https://www.kernel.org/pub/linux/bluetooth/bluez-$version.tar.xz
-
   - name: qt-base
     buildsystem: cmake-ninja
     builddir: true
@@ -253,9 +211,5 @@ modules:
     buildsystem: qmake
     sources:
       - type: archive
-        url: https://github.com/emericg/WatchFlower/archive/refs/tags/v5.2.tar.gz
-        sha256: dd0af12b7e7e315a020a062d69b73ad54c05e10850e21035aaa5e2f1228753d7
-      - type: file
-        path: watchflower.appdata.xml
-    post-install:
-      - mv -f watchflower.appdata.xml /app/share/appdata/watchflower.appdata.xml
+        url: https://github.com/emericg/WatchFlower/archive/refs/tags/v5.3.tar.gz
+        sha256: 6d1817400b9446f69be16451629b8415e9f148f394b0e77e9f19aaf50fa75c8f
