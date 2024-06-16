@@ -67,8 +67,8 @@ modules:
       - -DQT_BUILD_TESTS=OFF
     sources:
       - type: archive
-        url: https://download.qt.io/archive/qt/6.6/6.6.2/submodules/qttools-everywhere-src-6.6.2.tar.xz
-        sha256: e6d49e9f52111287f77878ecb8b708cce682f10b03ba2476d9247603bc6c4746
+        url: https://download.qt.io/archive/qt/6.7/6.7.1/submodules/qttools-everywhere-src-6.7.1.tar.xz
+        sha256: 0953cddf6248f3959279a10904892e8a98eb3e463d729a174b6fc47febd99824
         x-checker-data:
           type: anitya
           project-id: 7927
@@ -83,8 +83,8 @@ modules:
       - -DQT_BUILD_TESTS=OFF
     sources:
       - type: archive
-        url: https://download.qt.io/archive/qt/6.6/6.6.2/submodules/qtshadertools-everywhere-src-6.6.2.tar.xz
-        sha256: 628bead7ff4e7f42cb910f47d2adefbdea0d8c71a0234baef8ca709bf467b92f
+        url: https://download.qt.io/archive/qt/6.7/6.7.1/submodules/qtshadertools-everywhere-src-6.7.1.tar.xz
+        sha256: e585e3a985b2e2bad8191a84489a04e69c3defc6022a8e746aad22a1f17910c2
         x-checker-data:
           type: anitya
           project-id: 7927
@@ -151,8 +151,8 @@ modules:
       - -DQT_BUILD_TESTS=OFF
     sources:
       - type: archive
-        url: https://download.qt.io/archive/qt/6.6/6.6.2/submodules/qtsvg-everywhere-src-6.6.2.tar.xz
-        sha256: 5a231d59ef1b42bfbaa5174d4ff39f8e1b4ba070ef984a70b069b4b2576d8181
+        url: https://download.qt.io/archive/qt/6.7/6.7.1/submodules/qtsvg-everywhere-src-6.7.1.tar.xz
+        sha256: 3ed5b80f7228c41dd463b7a57284ed273d224d1c323c0dd78c5209635807cbce
         x-checker-data:
           type: anitya
           project-id: 7927
@@ -183,8 +183,8 @@ modules:
       - -DQT_BUILD_TESTS=OFF
     sources:
       - type: archive
-        url: https://download.qt.io/archive/qt/6.6/6.6.2/submodules/qtcharts-everywhere-src-6.6.2.tar.xz
-        sha256: b1486262ee07b4420b8cdd1525c01800186b15d4fee0669cf544fdd5e941f5f4
+        url: https://download.qt.io/archive/qt/6.7/6.7.1/submodules/qtcharts-everywhere-src-6.7.1.tar.xz
+        sha256: c236875ab3c812f0d59bad81a783095ae50932c7bea23cb81cd55437083d5d8c
         x-checker-data:
           type: anitya
           project-id: 7927
