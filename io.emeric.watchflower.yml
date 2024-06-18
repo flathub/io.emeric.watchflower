@@ -101,8 +101,8 @@ modules:
       - -DQT_BUILD_TESTS=OFF
     sources:
       - type: archive
-        url: https://download.qt.io/archive/qt/6.6/6.6.2/submodules/qtdeclarative-everywhere-src-6.6.2.tar.xz
-        sha256: c39ce9a7c4468f7399c9ced0fbe6ef9c8d6550efc4b893297aa3cfb965b3d84c
+        url: https://download.qt.io/archive/qt/6.7/6.7.1/submodules/qtdeclarative-everywhere-src-6.7.1.tar.xz
+        sha256: 81135c96ed2f599385b8a68c57f4f438dad193c62f946f5b200a321558fd9f1c
         x-checker-data:
           type: anitya
           project-id: 7927
@@ -117,8 +117,8 @@ modules:
       - -DQT_BUILD_TESTS=OFF
     sources:
       - type: archive
-        url: https://download.qt.io/archive/qt/6.6/6.6.2/submodules/qtwayland-everywhere-src-6.6.2.tar.xz
-        sha256: 9bcdd5cef7ae304e3e0435dac495367ccfb010d09f664b596ba330361941dd78
+        url: https://download.qt.io/archive/qt/6.7/6.7.1/submodules/qtwayland-everywhere-src-6.7.1.tar.xz
+        sha256: 7ef176a8e701c90edd8e591dad36f83c30d623ef94439ff62cafcffd46a83d20
         x-checker-data:
           type: anitya
           project-id: 7927
