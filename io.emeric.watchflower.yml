@@ -2,11 +2,11 @@ app-id: io.emeric.watchflower
 runtime: org.freedesktop.Platform
 runtime-version: '26.08'
 sdk: org.freedesktop.Sdk
-command: watchflower
 
-rename-desktop-file: watchflower.desktop
-rename-appdata-file: watchflower.appdata.xml
-rename-icon: watchflower
+command: WatchFlower
+rename-icon: WatchFlower
+rename-desktop-file: WatchFlower.desktop
+rename-appdata-file: WatchFlower.appdata.xml
 
 finish-args:
   # Our UI is GPU accelerated
@@ -17,17 +17,13 @@ finish-args:
   # Wayland access
   - --socket=wayland
   # We need Bluetooth support
+  - --share=network
   - --allow=bluetooth
   - --system-talk-name=org.bluez
-  # We can use network to connect to remote database
-  - --share=network
 
 cleanup:
-  - /bin/__pypache__
-  - /bin/rst*
   - /include
   - /lib/cmake
-  - /lib/cups
   - /lib/pkgconfig
   - /lib/python*
   - /share/doc
@@ -47,8 +43,8 @@ modules:
       - -DQT_BUILD_TESTS=OFF
     sources:
       - type: archive
-        url: https://download.qt.io/archive/qt/6.8/6.8.3/submodules/qtbase-everywhere-src-6.8.3.tar.xz
-        sha256: 56001b905601bb9023d399f3ba780d7fa940f3e4861e496a7c490331f49e0b80
+        url: https://download.qt.io/archive/qt/6.12/6.12.1/submodules/qtbase-everywhere-src-6.12.1.tar.xz
+        sha256: cd837bb9fd631e20439a04eaa0c2f252f19ad92fdf5adf10229d0fbc2fab2d53
         x-checker-data:
           type: anitya
           project-id: 7927
@@ -61,14 +57,13 @@ modules:
     buildsystem: cmake-ninja
     builddir: true
     config-opts:
-      - -DCMAKE_PREFIX_PATH=/app
       - -DCMAKE_BUILD_TYPE=RelWithDebInfo
       - -DQT_BUILD_EXAMPLES=OFF
       - -DQT_BUILD_TESTS=OFF
     sources:
       - type: archive
-        url: https://download.qt.io/archive/qt/6.8/6.8.3/submodules/qttools-everywhere-src-6.8.3.tar.xz
-        sha256: 02a4e219248b94f1333df843d25763f35251c1074cdc4fb5bda67d340f8c8b3a
+        url: https://download.qt.io/archive/qt/6.12/6.12.1/submodules/qttools-everywhere-src-6.12.1.tar.xz
+        sha256: 0d3d1a7eba32d1477f36211fb527c2c75f60cb10f3ddc41fdb804fd94147b640
         x-checker-data:
           type: anitya
           project-id: 7927
@@ -79,12 +74,13 @@ modules:
     buildsystem: cmake-ninja
     builddir: true
     config-opts:
+      - -DCMAKE_BUILD_TYPE=RelWithDebInfo
       - -DQT_BUILD_EXAMPLES=OFF
       - -DQT_BUILD_TESTS=OFF
     sources:
       - type: archive
-        url: https://download.qt.io/archive/qt/6.8/6.8.3/submodules/qtshadertools-everywhere-src-6.8.3.tar.xz
-        sha256: f6ec88bf42deba84d8f6b5d0914636ceed4749ccb51d1945b2f79b322b7ecf47
+        url: https://download.qt.io/archive/qt/6.12/6.12.1/submodules/qtshadertools-everywhere-src-6.12.1.tar.xz
+        sha256: f8c5b9c91eca0927198918c537d1b4d515f96dc9a3b178a88a1ff1d2f85c7877
         x-checker-data:
           type: anitya
           project-id: 7927
@@ -95,37 +91,18 @@ modules:
     buildsystem: cmake-ninja
     builddir: true
     config-opts:
-      - -DCMAKE_PREFIX_PATH=/app
       - -DCMAKE_BUILD_TYPE=RelWithDebInfo
       - -DQT_BUILD_EXAMPLES=OFF
       - -DQT_BUILD_TESTS=OFF
     sources:
       - type: archive
-        url: https://download.qt.io/archive/qt/6.8/6.8.3/submodules/qtdeclarative-everywhere-src-6.8.3.tar.xz
-        sha256: 1f03a2b8f5588b4face7da87926e9b2c1372b3a32157c52df07a75067a9db1af
+        url: https://download.qt.io/archive/qt/6.12/6.12.1/submodules/qtdeclarative-everywhere-src-6.12.1.tar.xz
+        sha256: 91853e52d7ba958bfd85ea46b5efcf4a3b28b02e7bcd0e7c97a7b797ed6d1ecc
         x-checker-data:
           type: anitya
           project-id: 7927
           stable-only: true
           url-template: https://download.qt.io/archive/qt/$major.$minor/$version/submodules/qtdeclarative-everywhere-src-$version.tar.xz
-
-  - name: qtwayland
-    buildsystem: cmake-ninja
-    config-opts:
-      - -DCMAKE_BUILD_TYPE=RelWithDebInfo
-      - -DQT_BUILD_EXAMPLES=OFF
-      - -DQT_BUILD_TESTS=OFF
-    sources:
-      - type: archive
-        url: https://download.qt.io/archive/qt/6.8/6.8.3/submodules/qtwayland-everywhere-src-6.8.3.tar.xz
-        sha256: 20fe385887d21190165a3180c17dcfc8b9a0e1da4ec76865b6334bdc709994b0
-        x-checker-data:
-          type: anitya
-          project-id: 7927
-          stable-only: true
-          url-template: https://download.qt.io/archive/qt/$major.$minor/$version/submodules/qtwayland-everywhere-src-$version.tar.xz
-    cleanup:
-      - /bin
 
   - name: qtsvg
     buildsystem: cmake-ninja
@@ -135,8 +112,8 @@ modules:
       - -DQT_BUILD_TESTS=OFF
     sources:
       - type: archive
-        url: https://download.qt.io/archive/qt/6.8/6.8.3/submodules/qtsvg-everywhere-src-6.8.3.tar.xz
-        sha256: 35eb516460f00f264eb504baa253432384351cf23fb9980a5857190e8deef438
+        url: https://download.qt.io/archive/qt/6.12/6.12.1/submodules/qtsvg-everywhere-src-6.12.1.tar.xz
+        sha256: 6a7157a9a0556a129ae6582c7fbe57a0d6c0b83083cfcbd38d5d4a93b30c46e1
         x-checker-data:
           type: anitya
           project-id: 7927
@@ -151,15 +128,15 @@ modules:
       - -DQT_BUILD_TESTS=OFF
     sources:
       - type: archive
-        url: https://download.qt.io/archive/qt/6.8/6.8.3/submodules/qtconnectivity-everywhere-src-6.8.3.tar.xz
-        sha256: 477176383308ce77f974a16f118027e833061caed57aeb30eeb4306a583c9b39
+        url: https://download.qt.io/archive/qt/6.12/6.12.1/submodules/qtconnectivity-everywhere-src-6.12.1.tar.xz
+        sha256: e0319d2f365bc128b45b051ac9de54240279d26188256bb9b1e89d3a99f3be62
         x-checker-data:
           type: anitya
           project-id: 7927
           stable-only: true
           url-template: https://download.qt.io/archive/qt/$major.$minor/$version/submodules/qtconnectivity-everywhere-src-$version.tar.xz
 
-  - name: qtcharts
+  - name: qtquick3d
     buildsystem: cmake-ninja
     config-opts:
       - -DCMAKE_BUILD_TYPE=RelWithDebInfo
@@ -167,15 +144,15 @@ modules:
       - -DQT_BUILD_TESTS=OFF
     sources:
       - type: archive
-        url: https://download.qt.io/archive/qt/6.8/6.8.3/submodules/qtcharts-everywhere-src-6.8.3.tar.xz
-        sha256: 34aa5f5a48bb7481c9bd62172696831c73c2cef327aa6b871b1861693b3e0914
+        url: https://download.qt.io/archive/qt/6.12/6.12.1/submodules/qtquick3d-everywhere-src-6.12.1.tar.xz
+        sha256: 32ba7a637f05ae2e198b215a814a3945b6b9ddd3b5fafff2406436994ccc0843
         x-checker-data:
           type: anitya
           project-id: 7927
           stable-only: true
-          url-template: https://download.qt.io/archive/qt/$major.$minor/$version/submodules/qtcharts-everywhere-src-$version.tar.xz
+          url-template: https://download.qt.io/archive/qt/$major.$minor/$version/submodules/qtquick3d-everywhere-src-$version.tar.xz
 
-  - name: qt5compat
+  - name: qtgraphs
     buildsystem: cmake-ninja
     config-opts:
       - -DCMAKE_BUILD_TYPE=RelWithDebInfo
@@ -183,21 +160,40 @@ modules:
       - -DQT_BUILD_TESTS=OFF
     sources:
       - type: archive
-        url: https://download.qt.io/archive/qt/6.8/6.8.3/submodules/qt5compat-everywhere-src-6.8.3.tar.xz
-        sha256: 54b9c84bff34b423dd8c472862ce1009753ff505e418b4ef33907416da16b82e
+        url: https://download.qt.io/archive/qt/6.12/6.12.1/submodules/qtgraphs-everywhere-src-6.12.1.tar.xz
+        sha256: 41bf52c13ab64e69037604187ba8d20463b9d1db292d8e2ad89e1be04a14298d
         x-checker-data:
           type: anitya
           project-id: 7927
           stable-only: true
-          url-template: https://download.qt.io/archive/qt/$major.$minor/$version/submodules/qt5compat-everywhere-src-$version.tar.xz
+          url-template: https://download.qt.io/archive/qt/$major.$minor/$version/submodules/qtgraphs-everywhere-src-$version.tar.xz
 
-  - name: watchflower
-    buildsystem: qmake
+  - name: qtwayland
+    buildsystem: cmake-ninja
+    config-opts:
+      - -DCMAKE_BUILD_TYPE=RelWithDebInfo
+      - -DQT_BUILD_EXAMPLES=OFF
+      - -DQT_BUILD_TESTS=OFF
     sources:
       - type: archive
-        url: https://github.com/emericg/WatchFlower/archive/refs/tags/v5.4.tar.gz
-        sha256: e0504be0ae5ac5843b19bfd57a59e47dd93a93067790fc5b865994defe312729
-      - type: file
-        path: watchflower.appdata.xml
-    post-install:
-      - mv -f watchflower.appdata.xml /app/share/appdata/watchflower.appdata.xml
+        url: https://download.qt.io/archive/qt/6.12/6.12.1/submodules/qtwayland-everywhere-src-6.12.1.tar.xz
+        sha256: 226cafcfd3b8c009f178d157d0772f902f6ee693ee39d219aba50eef0473c143
+        x-checker-data:
+          type: anitya
+          project-id: 7927
+          stable-only: true
+          url-template: https://download.qt.io/archive/qt/$major.$minor/$version/submodules/qtwayland-everywhere-src-$version.tar.xz
+    cleanup:
+      - /bin
+
+  - name: WatchFlower
+    buildsystem: cmake-ninja
+    sources:
+      - type: archive
+        url: https://github.com/emericg/WatchFlower/archive/refs/tags/v6.0.tar.gz
+        sha256: ff625b4e1af71e385e8b6ce7adab15369cde06682ed8ad1377751cbed2767446
+        x-checker-data:
+          is-main-source: true
+          type: github
+          repo: emericg/WatchFlower
+          source-archive: tarball
