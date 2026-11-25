@@ -206,8 +206,8 @@ modules:
     buildsystem: cmake-ninja
     sources:
       - type: archive
-        url: https://github.com/emericg/WatchFlower/archive/refs/tags/v6.0.tar.gz
-        sha256: ff625b4e1af71e385e8b6ce7adab15369cde06682ed8ad1377751cbed2767446
+        url: https://api.github.com/repos/emericg/WatchFlower/tarball/v6.0
+        sha256: bbf86692ab242f7cc4ef885159661ae37cedda27035eb5ef59acfcc44cef7ee8
         x-checker-data:
           is-main-source: true
           type: github
